@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .section h3 {
+            margin-top: 0;
+            color: #007BFF;
+        }
+        .section p, .section ul {
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            text-align: center;
+            padding: 8px;
+        }
+        table th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Diagnostic Results</h1>
+    <div class="container">
+        <!-- Demographic Information -->
+        <div class="section">
+            <h3>Demographic Information</h3>
+            <p><span class="highlight">Age:</span> {{ age }}</p>
+            <p><span class="highlight">Gender:</span> {{ gender }}</p>
+            <p><span class="highlight">Happiness Score:</span> {{ happiness_score }}</p>
+            <p><span class="highlight">Number of Days of Data:</span> {{ num_days }}</p>
+        </div>
+
+        <!-- PHQ-9 Analysis -->
+        <div class="section">
+            <h3>PHQ-9 Daily Scores</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for score in phq_scores %}
+                    <tr>
+                        <td>Day {{ loop.index }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <p><span class="highlight">Total PHQ-9 Score:</span> {{ total_score }}</p>
+            <p><span class="highlight">Mood Trend:</span> {{ trend }}</p>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="section">
+            <h3>Recommendations</h3>
+            <p>{{ recommendation }}</p>
+        </div>
+
+        <!-- Risk Factors -->
+        <div class="section">
+            <h3>Risk Factors</h3>
+            <p>{{ risk_factor }}</p>
+        </div>
+
+        <!-- Back Button -->
+        <a href="/" class="btn">Go Back</a>
+    </div>
+</body>
+</html>
